@@ -1,0 +1,51 @@
+.card_commitDetails {
+    margin-bottom: 30px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.card_commitDetails h3 {
+    margin: 0 0 0.5rem 0;
+    color: #999;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.card_commitDetails h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    color: #333;
+    text-align: left;
+}
+
+.card_commitDetails p {
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+}
+
+.card_commitDetails button {
+    background: white;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card_commitDetails button img {
+    margin-left: 5px
+}
+
+.card_commitDetails .inLine {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_commitDetails h4 {
+    margin: 0;
+}
