@@ -4,27 +4,42 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 const CardRepo = ({ repo }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { name, description, updated_at } = repo;
   const formatDate = Moment(updated_at).format("MMMM Do YYYY, h:mm:ss a");
   return (
-    <div className="column">
-      <div className="card_repo">
-        <h3>Last Update: {formatDate}</h3>
-        <h1>{name}</h1>
-        <p>{description}</p>
-        <div className="inLine">
-          <button onClick={() => navigate(`${name}`)}>
-            Branches
-            <img src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-arrow-arrows-those-icons-lineal-color-those-icons.png" alt="See Details" />
+    <li class="rounded-2xl bg-gray-800 px-8 py-10">
+      <img
+        class="mx-auto h-48 w-48 rounded-full md:h-56 md:w-56"
+        src="/images/logo.png"
+        alt=""
+      />
+      <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-white">
+        {name}
+      </h3>
+      <p class="text-sm leading-6 text-gray-400">{description}</p>
+      <p class="text-sm leading-6 text-gray-400">Last update: {formatDate}</p>
+      <ul role="list" class="mt-6 flex justify-center gap-x-6">
+        <li>
+          <button onClick={() => navigate(`${name}`)} class="text-gray-400 hover:text-gray-300">
+            <span class="sr-only">branches</span>
+            <img
+              class="h-5 w-5"
+              src="/images/branch.png"
+            />
           </button>
-          <button onClick={() => navigate(`${name}/pulls`)}>
-            Pull Requests
-            <img src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/24/000000/external-arrow-arrows-those-icons-lineal-color-those-icons.png" alt="See Details" />
+        </li>
+        <li>
+          <button onClick={() => navigate(`${name}/pulls`)} class="text-gray-400 hover:text-gray-300">
+            <span class="sr-only">Pull Requests</span>
+            <img
+              class="h-5 w-5"
+              src="/images/pr.png"
+            />
           </button>
-        </div>
-      </div>
-    </div>
+        </li>
+      </ul>
+    </li>
   );
 };
 

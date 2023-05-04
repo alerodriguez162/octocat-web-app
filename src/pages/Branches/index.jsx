@@ -12,17 +12,24 @@ const Branches = () => {
   let params = useParams();
   const repositoryId = params;
   // eslint-disable-next-line no-unused-vars
-  const [user, setUser] = useLocalStorage("user", "");
+  const [user] = useLocalStorage("user", "");
   const { data, loading, error } = useRequest(getBranches, `${user}/${repositoryId.repositoryId}`);
   return (
     <>
       <Container>
-        <h1>Branches of {repositoryId.repositoryId}</h1>
+      <div class="mx-auto max-w-2xl">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Branches of {repositoryId.repositoryId}
+          </h2>
+          <p class="mt-4 text-lg leading-8 text-gray-400">
+            Enjoy looking at your branches
+          </p>
+        </div>
         {loading && <Loading />}
         {error && <p>{error.message}</p>}
         {!loading && data.branches && !data.branches.length && <p>The repository has no branches</p>}
         {data && (
-          <CardsLayout direction={"vertical"}>
+          <CardsLayout>
             {data.branches.map((branch) => {
               return <CardBranches key={branch.commit} branch={branch} />;
             })}
