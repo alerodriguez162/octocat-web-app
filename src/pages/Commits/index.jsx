@@ -12,16 +12,29 @@ const Commits = () => {
   const { repositoryId, branchId } = params;
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useLocalStorage("user", "");
-  const { data, loading, error } = useRequest(getCommits, { reponame: `${user}/${repositoryId}`, branch: branchId });
+  const { data, loading, error } = useRequest(getCommits, {
+    reponame: `${user}/${repositoryId}`,
+    branch: branchId,
+  });
+  console.log(data)
   return (
     <>
       <Container>
-        <h1>Commits of {branchId}</h1>
+        <div class="mx-auto max-w-2xl">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Commits of {branchId}
+          </h2>
+          <p class="mt-4 text-lg leading-8 text-gray-400">
+            Enjoy looking at your Commits
+          </p>
+        </div>
         {loading && <Loading />}
         {error && <p>{error.message}</p>}
-        {!loading && data.commits && !data.commits.length && <p>The branch has no commits</p>}
+        {!loading && data.commits && !data.commits.length && (
+          <p>The branch has no commits</p>
+        )}
         {data && (
-          <CardsLayout direction={"vertical"}>
+          <CardsLayout>
             {data.commits.map((branch) => {
               return <CardCommits key={branch.sha} branch={branch} />;
             })}

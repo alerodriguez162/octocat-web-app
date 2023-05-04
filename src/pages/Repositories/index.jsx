@@ -20,12 +20,19 @@ const Repositories = () => {
   return (
     <>
       <Container>
-        <h1>Repositories of {user}</h1>
+        <div class="mx-auto max-w-2xl">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Repositories of {user}
+          </h2>
+          <p class="mt-4 text-lg leading-8 text-gray-400">
+            Enjoy looking at your repositories
+          </p>
+        </div>
         {loading && <Loading>Loading</Loading>}
         {error && <p>{error.message}</p>}
         {!loading && !data && <p>The user has no repositories</p>}
         {data && (
-          <CardsLayout direction={"horizontal"}>
+          <CardsLayout>
             {data.repositories.map((repo) => {
               return <CardRepo key={repo.id} repo={repo} />;
             })}
