@@ -11,7 +11,7 @@ import Repositories from "./pages/Repositories";
 
 function App() {
   return (
-    <div className="App">
+    <ScrollToTop className="App">
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Repositories/>} />
@@ -22,7 +22,7 @@ function App() {
           <Route exact path={`/:repositoryId/:branchId/:commitId`} element={<CommitDetails/>} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </ScrollToTop>
   );
 }
 
